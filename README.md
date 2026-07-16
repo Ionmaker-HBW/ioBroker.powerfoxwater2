@@ -1,8 +1,6 @@
 ![Logo](admin/powerfoxwater2.png)
 # ioBroker.powerfoxwater2
 
-[![NPM](https://nodei.co/npm/iobroker.powerfox2.png?downloads=true)](https://nodei.co/npm/iobroker.powerfox2/)
-
 ## powerfoxwater2 adapter for ioBroker
 
 This adapter fetches data from the powerfox cloud (https://www.powerfox.energy/) and makes it usable in iobroker.
