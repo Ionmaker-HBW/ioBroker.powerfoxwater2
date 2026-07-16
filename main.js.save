@@ -19,7 +19,7 @@ class Powerfox2 extends utils.Adapter {
   constructor(options) {
     super({
       ...options,
-      name: "powerfox2",
+      name: "powerfoxwater2",
     });
     // --- ÄNDERUNG [DAEMON]: killTimeout entfernt, queryTimeout + apiClient als Instanzvariablen ---
     // ALTCODE: this.killTimeout = null;
@@ -174,17 +174,24 @@ class Powerfox2 extends utils.Adapter {
             // --- ÄNDERUNG [WICHTIG #2]: Validierung der API-Antwortdaten ---
             // ALTCODE: (keine Validierung vorhanden)
             // NEUCODE:
-	    if (data.CubicMeterCold === undefined) {
-    		this.log.error(
-        	`Incomplete water data received for device: ${device.name}`,
-    		);
-    		continue;
-	    }
+            if (data.Watt === undefined || data.A_Plus === undefined) {
+              this.log.error(
+                `Incomplete data received for device: ${device.name}`,
+              );
+              continue;
+            }
             // --- ENDE ÄNDERUNG ---
 
-		this.log.debug(
- 		   `coldWater: ${data.CubicMeterCold} m³ | warmWater: ${data.CubicMeterWarm} m³`,
-		);
+            let consumption = 0,
+              feedIn = 0;
+
+            if (data.Watt < 0) {
+              feedIn = data.Watt * -1;
+            } else {
+              consumption = data.Watt;
+            }
+            this.log.debug(`consumption: ${consumption}W | feedIn: ${feedIn}W`);
+
             // ALTCODE (number):
             // const timestamp = (parseInt(data.Timestamp) || 0) * 1000;
             // NEUCODE (string): passend zum bestehenden State-Typ in ioBroker
@@ -215,55 +222,94 @@ class Powerfox2 extends utils.Adapter {
                 false,
                 false,
               );
-		await this.fsetObjectNotExistsAsync(
-  `${path}.coldWater`,
-  "state",
-  "Cold Water",
-  "number",
-  "value.volume",
-  "m³",
-  false,
-  false,
-);
-
-await this.fsetObjectNotExistsAsync(
-  `${path}.warmWater`,
-  "state",
-  "Warm Water",
-  "number",
-  "value.volume",
-  "m³",
-  false,
-  false,
-);
-
-await this.fsetObjectNotExistsAsync(
-  `${path}.outdated`,
-  "state",
-  "Outdated",
-  "boolean",
-  "indicator",
-  "",
-  false,
-  false,
-);
-
-await this.fsetObjectNotExistsAsync(
-  `${path}.timestamp`,
-  "state",
-  "Timestamp",
-  "string",
-  "date",
-  "",
-  false,
-  false,
-);
               await this.fsetObjectNotExistsAsync(
                 `${path}.outdated`,
                 "state",
                 "outdated",
                 "boolean",
                 "indicator",
+                "",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.currentPowerConsumption`,
+                "state",
+                "currentPowerConsumption",
+                "number",
+                "value",
+                "W",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.currentPower`,
+                "state",
+                "currentPower",
+                "number",
+                "value",
+                "W",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.currentFeedIn`,
+                "state",
+                "currentFeedIn",
+                "number",
+                "value",
+                "W",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.consumptionMeterReadingKWh`,
+                "state",
+                "consumptionMeterReading",
+                "number",
+                "value",
+                "kWh",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.consumptionMeterReadingHTKWh`,
+                "state",
+                "consumptionMeterReadingHT",
+                "number",
+                "value",
+                "kWh",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.consumptionMeterReadingNTKWh`,
+                "state",
+                "consumptionMeterReadingNT",
+                "number",
+                "value",
+                "kWh",
+                false,
+                false,
+              );
+              await this.fsetObjectNotExistsAsync(
+                `${path}.feedInMeterReadingKWh`,
+                "state",
+                "feedInMeterReading",
+                "number",
+                "value",
+                "kWh",
+                false,
+                false,
+              );
+              // ALTCODE (number): await this.fsetObjectNotExistsAsync(path + '.timestamp', 'state', 'DateTime from data', 'number', 'date', '', false, false);
+              // NEUCODE (string): passend zum bestehenden State-Typ in ioBroker
+              await this.fsetObjectNotExistsAsync(
+                `${path}.timestamp`,
+                "state",
+                "DateTime from data",
+                "string",
+                "date",
                 "",
                 false,
                 false,
@@ -277,15 +323,39 @@ await this.fsetObjectNotExistsAsync(
             // await this.setStateAsync(path + '.outdated', data.Outdated, true);
             // ... (10x sequenziell)
             // NEUCODE:
-           await Promise.all([
-  this.setStateAsync(`${path}.deviceType`, "WATER", true),
-  this.setStateAsync(`${path}.coldWater`, data.CubicMeterCold, true),
-  this.setStateAsync(`${path}.warmWater`, data.CubicMeterWarm || 0, true),
-  this.setStateAsync(`${path}.outdated`, data.Outdated, true),
-  this.setStateAsync(`${path}.timestamp`, timestamp, true),
-]);
- 
-		// --- ENDE ÄNDERUNG ---
+            await Promise.all([
+              this.setStateAsync(`${path}.deviceType`, "POWER", true),
+              this.setStateAsync(`${path}.outdated`, data.Outdated, true),
+              this.setStateAsync(
+                `${path}.currentPowerConsumption`,
+                consumption,
+                true,
+              ),
+              this.setStateAsync(`${path}.currentPower`, data.Watt, true),
+              this.setStateAsync(`${path}.currentFeedIn`, feedIn, true),
+              this.setStateAsync(
+                `${path}.consumptionMeterReadingKWh`,
+                data.A_Plus / 1000,
+                true,
+              ),
+              this.setStateAsync(
+                `${path}.consumptionMeterReadingHTKWh`,
+                data.A_Plus_HT / 1000,
+                true,
+              ),
+              this.setStateAsync(
+                `${path}.consumptionMeterReadingNTKWh`,
+                data.A_Plus_NT / 1000,
+                true,
+              ),
+              this.setStateAsync(
+                `${path}.feedInMeterReadingKWh`,
+                data.A_Minus / 1000,
+                true,
+              ),
+              this.setStateAsync(`${path}.timestamp`, timestamp, true),
+            ]);
+            // --- ENDE ÄNDERUNG ---
           }
         } catch (error) {
           this.log.error(`error: ${error}`);

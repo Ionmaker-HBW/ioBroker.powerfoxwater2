@@ -1,17 +1,17 @@
 {
-  "name": "iobroker.powerfox2",
+  "name": "iobroker.powerfoxwater2",
   "version": "0.0.15",
-  "description": "powerfox2",
+  "description": "powerfoxwater2",
   "author": {
-    "name": "Ax-LED",
-    "email": "alex_draxler@yahoo.de"
+    "name": "ionmaker",
+    "email": "fhionen@gmail.com"
   },
   "contributors": [
     {
-      "name": "bazidibavaria"
+      "name": ""
     }
   ],
-  "homepage": "https://github.com/Ax-LED/ioBroker.powerfox2",
+  "homepage": "https://github.com/Ionmaker-HBW/ioBroker.powerfoxwater2",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -19,14 +19,12 @@
     "home automation",
     "powerfox",
     "poweropti",
-    "energy",
-    "electricity",
-    "power meter",
     "smart meter"
+    "water meter"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ax-LED/ioBroker.powerfox2"
+    "url": "https://github.com/Ionmaker-HBW/ioBroker.powerfoxwater2"
   },
   "engines": {
     "node": ">= 20"
@@ -72,7 +70,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/Ax-LED/ioBroker.powerfox2/issues"
+    "url": "https://github.com/Ionmaker-HBW/ioBroker.powerfoxwater2/issues"
   },
   "readmeFilename": "README.md"
 }
