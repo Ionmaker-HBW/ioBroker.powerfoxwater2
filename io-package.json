@@ -1,6 +1,6 @@
 {
   "common": {
-    "name": "powerfox2",
+    "name": "powerfoxwater2",
     "version": "0.0.15",
     "news": {
       "0.0.15": {
@@ -96,50 +96,37 @@
       }
     },
     "titleLang": {
-      "en": "powerfox2",
-      "de": "powerfox2",
-      "ru": "powerfox2",
-      "pt": "powerfox2",
-      "nl": "powerfox2",
-      "fr": "powerfox2",
-      "it": "powerfox2",
-      "es": "powerfox2",
-      "pl": "lisek2",
-      "uk": "powerfox2",
-      "zh-cn": "电狐2"
+      "en": "powerfoxwater2",
+      "de": "powerfoxwater2",
+      "ru": "powerfoxwater2",
+      "pt": "powerfoxwater2",
+      "nl": "powerfoxwater2",
+      "fr": "powerfoxwater2",
+      "it": "powerfoxwater2",
+      "es": "powerfoxwater2",
+      "pl": "powerfoxwater2",
+      "uk": "powerfoxwater2"
     },
     "desc": {
-      "en": "powerfox2 provides energy data",
-      "de": "powerfox2 liefert Energiedaten",
-      "ru": "powerfox2 предоставляет данные об энергии",
-      "pt": "powerfox2 fornece dados de energia",
-      "nl": "powerfox2 levert energiegegevens",
-      "fr": "powerfox2 fournit des données énergétiques",
-      "it": "powerfox2 fornisce dati sull'energia",
-      "es": "powerfox2 proporciona datos de energía",
-      "pl": "powerfox2 dostarcza dane dotyczące energii",
-      "uk": "powerfox2 надає дані про енергію",
-      "zh-cn": "powerfox提供能源数据"
+      "en": "powerfoxwater2 provides water consumption data",
+      "de": "powerfoxwater2 liefert Wasserverbrauchsdaten"
     },
     "authors": [
-      "Ax-LED <alex_draxler@yahoo.de>"
+      "ionmaker"
     ],
     "keywords": [
       "powerfox",
       "poweropti",
-      "energiedaten",
-      "energy data",
-      "stromverbrauch",
-      "strommessung"
+      "water"
     ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"
     },
     "platform": "Javascript/Node.js",
-    "icon": "powerfox2.png",
-    "extIcon": "https://raw.githubusercontent.com/ax-led/ioBroker.powerfox2/main/admin/powerfox2.png",
-    "readme": "https://github.com/ax-led/ioBroker.powerfox2/blob/main/README.md",
+    "icon": "powerfoxwater2.png",
+    "extIcon": "https://raw.githubusercontent.com/Ionmaker-HBW/ioBroker.powerfoxwater2/main/admin/powerfoxwater2.png",
+    "readme": "https://github.com/Ionmaker-HBW/ioBroker.powerfoxwater2/blob/main/README.md",
     "loglevel": "info",
     "tier": 2,
     "mode": "daemon",

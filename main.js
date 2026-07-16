@@ -19,7 +19,7 @@ class Powerfox2 extends utils.Adapter {
   constructor(options) {
     super({
       ...options,
-      name: "powerfox2",
+      name: "powerfoxwater2",
     });
     // --- ÄNDERUNG [DAEMON]: killTimeout entfernt, queryTimeout + apiClient als Instanzvariablen ---
     // ALTCODE: this.killTimeout = null;
@@ -161,16 +161,14 @@ class Powerfox2 extends utils.Adapter {
             const data = result.data;
             this.log.debug(`API response data: ${JSON.stringify(data)}`);
 
-            /**{
-						"Outdated":false,
-						"Watt":250.0,
-						"Timestamp":1636062444,
-						"A_Plus":217153.0,
-						"A_Plus_HT": 15556.911,
-						"A_Plus_NT": 38451.095,
-						"A_Minus":48676.0
-						}*/
-
+            /**
+{
+    "Outdated": false,
+    "CubicMeterCold": 635.262,
+    "CubicMeterWarm": 0,
+    "Timestamp": 1784099699
+}
+*/
             // --- ÄNDERUNG [WICHTIG #2]: Validierung der API-Antwortdaten ---
             // ALTCODE: (keine Validierung vorhanden)
             // NEUCODE:
