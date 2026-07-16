@@ -311,7 +311,7 @@ await this.fsetObjectNotExistsAsync(
     // NEUCODE: selbst-rekursiv via setTimeout mit dynamischem Intervall
     const interval = this.getCurrentInterval();
     this.log.debug(`next query in ${interval / 1000} seconds`);
-    this.queryTimeout = setTimeout(() => this.queryDevices(), interval);
+    this.queryTimeout = this.setTimeout(() => this.queryDevices(), interval);
     // --- ENDE ÄNDERUNG ---
   }
   // --- ENDE ÄNDERUNG ---
