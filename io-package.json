@@ -105,11 +105,22 @@
       "it": "powerfoxwater2",
       "es": "powerfoxwater2",
       "pl": "powerfoxwater2",
-      "uk": "powerfoxwater2"
+      "uk": "powerfoxwater2",
+      "zh-cn": "powerfoxwater2"
     },
     "desc": {
-      "en": "powerfoxwater2 provides water consumption data",
-      "de": "powerfoxwater2 liefert Wasserverbrauchsdaten"
+  "en": "powerfoxwater2 provides water consumption data",
+  "de": "powerfoxwater2 liefert Wasserverbrauchsdaten",
+  "ru": "powerfoxwater2 предоставляет данные о потреблении воды",
+  "pt": "powerfoxwater2 fornece dados de consumo de água",
+  "nl": "powerfoxwater2 levert waterverbruiksgegevens",
+  "fr": "powerfoxwater2 fournit des données de consommation d'eau",
+  "it": "powerfoxwater2 fornisce dati sul consumo di acqua",
+  "es": "powerfoxwater2 proporciona datos de consumo de agua",
+  "pl": "powerfoxwater2 dostarcza dane o zużyciu wody",
+  "uk": "powerfoxwater2 надає дані про споживання води",
+  "zh-cn": "powerfoxwater2 提供用水量数据"
+           } 
     },
     "authors": [
       "ionmaker"
