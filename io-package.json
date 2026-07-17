@@ -3,7 +3,7 @@
     "name": "powerfoxwater2",
     "version": "0.0.16",
     "news": {
-      "0.0.15": {
+      "0.0.16": {
         "en": "daemon mode with day/night query interval",
         "de": "Daemon-Modus mit Tag/Nacht-Abfrageintervall",
         "ru": "режим демона с дневным/ночным интервалом",
@@ -16,85 +16,6 @@
         "uk": "режим демона з інтервалом день/ніч",
         "zh-cn": "守护进程模式，日夜查询间隔"
       },
-      "0.0.14": {
-        "en": "further code optimizations",
-        "de": "weitere codeoptimierungen",
-        "ru": "дальнейшая оптимизация кода",
-        "pt": "mais otimizações de código",
-        "nl": "vertaling:",
-        "fr": "d'autres optimisations de code",
-        "it": "ulteriori ottimizzazioni del codice",
-        "es": "nuevas optimizaciones de código",
-        "pl": "dalsza optymalizacja kodu",
-        "uk": "подальші оптимізації коду",
-        "zh-cn": "进一步规范优化"
-      },
-      "0.0.13": {
-        "en": "added timeouot for axios\noptimized code",
-        "de": "timouot für axios\noptimierter code",
-        "ru": "добавлено timeouot для axios\nоптимизированный код",
-        "pt": "adicionado timeouot para axios\ncódigo otimizado",
-        "nl": "voegde tijdouot toe\noptimaal code",
-        "fr": "timeouot ajouté pour axios\ncode optimisé",
-        "it": "timeouot aggiunto per assio\ncodice ottimizzato",
-        "es": "timeouot añadido para axios\ncódigo optimizado",
-        "pl": "dodać czasoty\noptymalizowany kod",
-        "uk": "доданий часоот для осей\nоптимізований код",
-        "zh-cn": "简称表\n优化守则"
-      },
-      "0.0.12": {
-        "en": "optimized code on Apollon77 suggestions\nadded night time / off-peak electricity values",
-        "de": "optimierter Code auf Apollon77-Vorschlägen\nzuzüglich Nacht-/Niedertarifstromwerte",
-        "ru": "оптимизированный код по предложениям Apollon77\nдобавлены ночные/непиковые значения электроэнергии",
-        "pt": "código otimizado nas sugestões do Apollon77\nvalores de eletricidade de horário noturno / fora de pico adicionados",
-        "nl": "geoptimaliseerde code op Apollon77-suggesties\ntoegevoegde nacht / dal-elektriciteitswaarden",
-        "fr": "code optimisé sur les suggestions d'Apollon77\nvaleurs électriques ajoutées la nuit / heures creuses",
-        "it": "codice ottimizzato sui suggerimenti di Apollon77\nvalori di energia elettrica notturna/non di punta aggiunti",
-        "es": "código optimizado en las sugerencias de Apollon77\nvalores de electricidad añadidos durante la noche/fuera de las horas pico",
-        "pl": "zoptymalizowany kod pod sugestiami Apollon77\ndodane wartości energii elektrycznej w godzinach nocnych / poza szczytem",
-        "uk": "оптимізований код за пропозиціями Apollon77\nдодані нічні/позапікові значення електроенергії",
-        "zh-cn": "Apollon77 建议的优化代码\n增加夜间/非高峰用电值"
-      },
-      "0.0.11": {
-        "en": "change year of license",
-        "de": "Jahr der Lizenz ändern",
-        "ru": "изменить год лицензии",
-        "pt": "mudar ano de licença",
-        "nl": "jaar van licentie wijzigen",
-        "fr": "changer d'année de licence",
-        "it": "cambiare anno di patente",
-        "es": "cambiar año de licencia",
-        "pl": "zmień rok licencji",
-        "uk": "змінити рік ліцензії",
-        "zh-cn": "更改执照年份"
-      },
-      "0.0.10": {
-        "en": "change year of copyright",
-        "de": "Jahr des Urheberrechts ändern",
-        "ru": "изменить год действия авторских прав",
-        "pt": "mudar ano de direitos autorais",
-        "nl": "jaar van copyright wijzigen",
-        "fr": "changer l'année du droit d'auteur",
-        "it": "cambia anno di copyright",
-        "es": "cambiar año de derechos de autor",
-        "pl": "zmień rok praw autorskich",
-        "uk": "змінити рік авторського права",
-        "zh-cn": "更改版权年份"
-      },
-      "0.0.9": {
-        "en": "optimized code on Apollon77 suggestions",
-        "de": "optimierter Code für Apollon77-Vorschläge",
-        "ru": "оптимизированный код по предложениям Apollon77",
-        "pt": "código otimizado nas sugestões do Apollon77",
-        "nl": "geoptimaliseerde code op Apollon77-suggesties",
-        "fr": "code optimisé sur les suggestions Apollon77",
-        "it": "codice ottimizzato sui suggerimenti di Apollon77",
-        "es": "código optimizado en sugerencias de Apollon77",
-        "pl": "zoptymalizowany kod pod sugestiami Apollon77",
-        "uk": "оптимізований код за пропозиціями Apollon77",
-        "zh-cn": "Apollon77 建议的优化代码"
-      }
-    },
     "titleLang": {
       "en": "powerfoxwater2",
       "de": "powerfoxwater2",
