@@ -314,7 +314,7 @@ await this.fsetObjectNotExistsAsync(
 
             if (result.status === 200) {
                 this.log.info(
-                    `Retry successful for ${device.name}`,
+                   `Retry successful for ${device.name}: Cold=${result.data.CubicMeterCold} m³, Warm=${result.data.CubicMeterWarm} m³`, 
                 );
             }
         } catch (retryError) {
