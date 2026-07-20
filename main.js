@@ -80,7 +80,7 @@ class Powerfox2 extends utils.Adapter {
     ).toString("base64")}`;
     this.apiClient = axios.create({
       baseURL: "https://backend.powerfox.energy/api/2.0/my/",
-      timeout: 15000,
+      timeout: 45000,
       headers: { Authorization: auth },
     });
     // --- ENDE ÄNDERUNG ---
