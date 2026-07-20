@@ -315,6 +315,10 @@ await this.fsetObjectNotExistsAsync(
 if (result.status === 200) {
     const data = result.data;
 
+   const timestamp = new Date(
+	(parseInt(data.Timestamp) || 0) * 1000,
+	).toUTCString();
+
     this.log.info(
         `Retry successful for ${device.name}: Cold=${data.CubicMeterCold} m³`
     );
