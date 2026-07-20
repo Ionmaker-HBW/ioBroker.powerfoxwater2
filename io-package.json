@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "powerfoxwater2",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "news": {
       "0.0.16": {
         "en": "daemon mode with day/night query interval",
@@ -15,7 +15,8 @@
         "pl": "tryb demona z interwałem dzień/noc",
         "uk": "режим демона з інтервалом день/ніч",
         "zh-cn": "守护进程模式，日夜查询间隔"
-      },
+	 }
+	},
     "titleLang": {
       "en": "powerfoxwater2",
       "de": "powerfoxwater2",
