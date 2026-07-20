@@ -291,24 +291,42 @@ await this.fsetObjectNotExistsAsync(
  
 		// --- ENDE ÄNDERUNG ---
           }
-        } catch (error) {
-          this.log.error(`error: ${error}`);
-          this.log.error(`error.message: ${error.message}`);
-          if (error.response) {
-            if (error.response.status === 401) {
-              this.log.error(`Error ${error.response.status}: Unauthorized`);
-            } else if (error.response.status === 429) {
-              this.log.warn(
+	} catch (error) {
+    if (error.response) {
+        if (error.response.status === 401) {
+            this.log.error(`Error ${error.response.status}: Unauthorized`);
+        } else if (error.response.status === 429) {
+            this.log.warn(
                 `Error ${error.response.status}: Too many requests`,
-              );
-            } else {
-              this.log.error(`error.response.status: ${error.response.status}`);
-            }
-          } else if (error.code === "ECONNABORTED") {
-            this.log.warn(`Request timeout for device: ${device.name}`);
-          }
+            );
+        } else {
+            this.log.error(
+                `error.response.status: ${error.response.status}`,
+            );
         }
-        // --- ENDE ÄNDERUNG ---
+    } else if (error.code === "ECONNABORTED") {
+        this.log.warn(
+            `Request timeout for device: ${device.name}, retrying once`,
+        );
+
+        try {
+            const result = await this.apiClient.get(curDataUrl);
+
+            if (result.status === 200) {
+                this.log.info(
+                    `Retry successful for ${device.name}`,
+                );
+            }
+        } catch (retryError) {
+            this.log.warn(
+                `Retry failed for ${device.name}: ${retryError.message}`,
+            );
+        }
+    } else {
+        this.log.error(`error.message: ${error.message}`);
+    }
+}
+	// --- ENDE ÄNDERUNG ---
       }
     } // End for loop
 
