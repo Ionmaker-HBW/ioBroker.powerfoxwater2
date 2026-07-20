@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "powerfoxwater2",
-    "version": "0.0.21",
+    "version": "0.0.20",
     "news": {
-      "0.0.21": {
+      "0.0.19": {
         "en": "daemon mode with day/night query interval",
         "de": "Daemon-Modus mit Tag/Nacht-Abfrageintervall",
         "ru": "режим демона с дневным/ночным интервалом",

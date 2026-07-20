@@ -157,16 +157,10 @@ class Powerfox2 extends utils.Adapter {
           );
           // --- ENDE ÄNDERUNG ---
 
-         if (result.status === 200) {
-         const data = result.data;
-         this.log.debug(`API response data: ${JSON.stringify(data)}`);
+          if (result.status === 200) {
+            const data = result.data;
+            this.log.debug(`API response data: ${JSON.stringify(data)}`);
 
-          this.log.info(
-            `Read request successful for ${device.name}: 
-          Cold=${data.CubicMeterCold} m³, Warm=${data.CubicMeterWarm} m³`
-           );
-
-    // State-Updates...
             /**
 {
     "Outdated": false,
@@ -291,57 +285,24 @@ await this.fsetObjectNotExistsAsync(
  
 		// --- ENDE ÄNDERUNG ---
           }
-	} catch (error) {
-    if (error.response) {
-        if (error.response.status === 401) {
-            this.log.error(`Error ${error.response.status}: Unauthorized`);
-        } else if (error.response.status === 429) {
-            this.log.warn(
+        } catch (error) {
+          this.log.error(`error: ${error}`);
+          this.log.error(`error.message: ${error.message}`);
+          if (error.response) {
+            if (error.response.status === 401) {
+              this.log.error(`Error ${error.response.status}: Unauthorized`);
+            } else if (error.response.status === 429) {
+              this.log.warn(
                 `Error ${error.response.status}: Too many requests`,
-            );
-        } else {
-            this.log.error(
-                `error.response.status: ${error.response.status}`,
-            );
+              );
+            } else {
+              this.log.error(`error.response.status: ${error.response.status}`);
+            }
+          } else if (error.code === "ECONNABORTED") {
+            this.log.warn(`Request timeout for device: ${device.name}`);
+          }
         }
-    } else if (error.code === "ECONNABORTED") {
-        this.log.debug(
-            `Request timeout for device: ${device.name}, retrying once`,
-        );
-
-        try {
-       const result = await this.apiClient.get(curDataUrl);
-
-if (result.status === 200) {
-    const data = result.data;
-
-   const timestamp = new Date(
-	(parseInt(data.Timestamp) || 0) * 1000,
-	).toUTCString();
-
-    this.log.info(
-        `Retry successful for ${device.name}: Cold=${data.CubicMeterCold} m³`
-    );
-
-    // Hier dieselben States wie im Hauptpfad schreiben
-    await Promise.all([
-        this.setStateAsync(`${path}.deviceType`, "WATER", true),
-        this.setStateAsync(`${path}.coldWater`, data.CubicMeterCold, true),
-        this.setStateAsync(`${path}.warmWater`, data.CubicMeterWarm || 0, true),
-        this.setStateAsync(`${path}.outdated`, data.Outdated, true),
-        this.setStateAsync(`${path}.timestamp`, timestamp, true),
-    ]);
-	}
-	 }catch (retryError) {
-            this.log.debug(
-                `Retry failed for ${device.name}: ${retryError.message}`,
-            );
-        }
-    } else {
-        this.log.error(`error.message: ${error.message}`);
-    }
-}
-	// --- ENDE ÄNDERUNG ---
+        // --- ENDE ÄNDERUNG ---
       }
     } // End for loop
 
