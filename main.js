@@ -162,11 +162,11 @@ class Powerfox2 extends utils.Adapter {
          this.log.debug(`API response data: ${JSON.stringify(data)}`);
 
           this.log.info(
-           `Read request successful for ${device.name}: Cold=${data.CubicMeterCold} m³, Warm=${data.CubicMeterWarm} m³`
+            `Read request successful for ${device.name}: 
+          Cold=${data.CubicMeterCold} m³, Warm=${data.CubicMeterWarm} m³`
            );
 
     // State-Updates...
-}
             /**
 {
     "Outdated": false,
