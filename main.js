@@ -310,14 +310,25 @@ await this.fsetObjectNotExistsAsync(
         );
 
         try {
-            const result = await this.apiClient.get(curDataUrl);
+       const result = await this.apiClient.get(curDataUrl);
 
-            if (result.status === 200) {
-                this.log.info(
-                   `Retry successful for ${device.name}: Cold=${result.data.CubicMeterCold} m³, Warm=${result.data.CubicMeterWarm} m³`, 
-                );
-            }
-        } catch (retryError) {
+if (result.status === 200) {
+    const data = result.data;
+
+    this.log.info(
+        `Retry successful for ${device.name}: Cold=${data.CubicMeterCold} m³`
+    );
+
+    // Hier dieselben States wie im Hauptpfad schreiben
+    await Promise.all([
+        this.setStateAsync(`${path}.deviceType`, "WATER", true),
+        this.setStateAsync(`${path}.coldWater`, data.CubicMeterCold, true),
+        this.setStateAsync(`${path}.warmWater`, data.CubicMeterWarm || 0, true),
+        this.setStateAsync(`${path}.outdated`, data.Outdated, true),
+        this.setStateAsync(`${path}.timestamp`, timestamp, true),
+    ]);
+	}
+	 }catch (retryError) {
             this.log.warn(
                 `Retry failed for ${device.name}: ${retryError.message}`,
             );
