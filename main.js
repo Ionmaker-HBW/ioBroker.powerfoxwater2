@@ -157,10 +157,16 @@ class Powerfox2 extends utils.Adapter {
           );
           // --- ENDE ÄNDERUNG ---
 
-          if (result.status === 200) {
-            const data = result.data;
-            this.log.debug(`API response data: ${JSON.stringify(data)}`);
+         if (result.status === 200) {
+         const data = result.data;
+         this.log.debug(`API response data: ${JSON.stringify(data)}`);
 
+          this.log.info(
+           `Read request successful for ${device.name}: Cold=${data.CubicMeterCold} m³, Warm=${data.CubicMeterWarm} m³`
+           );
+
+    // State-Updates...
+}
             /**
 {
     "Outdated": false,
